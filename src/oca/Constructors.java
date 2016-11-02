@@ -11,8 +11,10 @@ public class Constructors {
      */
     public class Parent {
         public Parent() {
-            // If a constructor does not explicitly invoke a superclass constructor, the Java compiler automatically inserts a call to the no-argument constructor of the superclass.
-            // If the super class does not have a no-argument constructor, you will get a compile-time error. Object does have such a constructor, so if Object is the only superclass, there is no problem.
+            // If a constructor does not explicitly invoke a superclass constructor, the Java compiler automatically
+            // inserts a call to the no-argument constructor of the superclass.
+            // If the super class does not have a no-argument constructor, you will get a compile-time error. Object
+            // does have such a constructor, so if Object is the only superclass, there is no problem.
         }
     }
 
@@ -25,7 +27,8 @@ public class Constructors {
 
     public class Child1 extends Parent {
         public Child1() {
-            super(); // Compilation fails here because call to super should always be the first statement in a constructor!
+            System.out.println("Hello from Child1");
+            super(); // Compilation fails because call to super should always be the first statement in a constructor!
         }
     }
 
