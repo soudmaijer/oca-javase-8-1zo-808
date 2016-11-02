@@ -5,6 +5,9 @@ public class ExceptionHandling {
     public class MyException extends Exception {
     }
 
+    public class MyExceptionSub extends MyException {
+    }
+
     /**************************************************************************************************************************
      *
      * Throws and throw
@@ -15,12 +18,36 @@ public class ExceptionHandling {
         throw new MyException();
     }
 
+    void doSomeThingElseThatThrowsACheckedException() throws Exception /* parent class of MyException is allowed */ {
+        throw new MyException();
+    }
+
     void doSomeThingThatThrowsARuntimeException() {
         throw new RuntimeException();
     }
 
     void doSomeThingThatThrowsAnError() {
         throw new Error(); // you should never throw this yourself, prefer using a checked or RuntimeException.
+    }
+
+    static class ExceptionHandlingChild1 extends ExceptionHandling {
+        @Override
+        void doSomeThingThatThrowsACheckedException() {
+            // even though we are overriding the method, we dont throw an exception here, so the throws is not required
+        }
+    }
+
+    static class ExceptionHandlingChild2 extends ExceptionHandling {
+        @Override
+        void doSomeThingThatThrowsACheckedException() throws Exception
+            /* compilation fails because only MyException and subclasses of MyException are allowed */ {
+        }
+    }
+
+    static class ExceptionHandlingChild3 extends ExceptionHandling {
+        @Override
+        void doSomeThingThatThrowsACheckedException() throws MyExceptionSub /* subclasses of MyException are allowed */ {
+        }
     }
 
     /**************************************************************************************************************************
