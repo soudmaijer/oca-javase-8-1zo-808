@@ -2,17 +2,14 @@ package oca;
 
 public class Constructors {
 
-    /**
-     * It is allowed to have public inner classes, but a static inner class is more convenient.
-     */
-    public class Parent {
+    class Parent {
         // When not defining a Constructor, a default constructor is generated which looks like (empty body!):
         //
         // public Parent {
         // }
     }
 
-    public class Child extends Parent {
+    class Child extends Parent {
         public Child() {
             // If a constructor does not explicitly invoke a superclass constructor, the Java compiler automatically
             // inserts a call to the no-argument constructor of the superclass.
@@ -21,14 +18,14 @@ public class Constructors {
         }
     }
 
-    public class Child1 extends Parent {
+    class Child1 extends Parent {
         public Child1() {
             System.out.println("Hello from Child1");
             super(); // Compilation fails because call to super should always be the first statement in a constructor!
         }
     }
 
-    public class Child2 extends Parent {
+    class Child2 extends Parent {
         private boolean b;
 
         public Child2() {
@@ -41,7 +38,7 @@ public class Constructors {
         }
     }
 
-    public class Child3 extends Parent {
+    class Child3 extends Parent {
         private boolean b;
 
         public Child3() {
@@ -52,12 +49,6 @@ public class Constructors {
             super();
             this.b = b;
         }
-    }
-
-    public static void main(String[] args) {
-        Constructors c = new Constructors();
-        Parent parent = c.new Parent(); // super weird, but correct
-        c.new Child(); // super weird, but correct
     }
 }
 
