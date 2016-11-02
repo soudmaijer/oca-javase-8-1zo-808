@@ -96,16 +96,32 @@ public class ExceptionHandling {
      *
      *************************************************************************************************************************/
 
-    void finallyOnlyExecutesInCaseOfAnException() {
+    void finallyAlwaysExecutes() {
         try {
             if (false) {
                 // this never happens
                 doSomeThingThatThrowsARuntimeException();
             }
         } finally {
-            // Finally only executes in case of an exception, so this code here is never reached.
+            // Finally always executes, also after an exception.
             System.out.println("Some exception occurred here... but not handling it.");
         }
+        // Resumes normal execution
+        System.out.println("Resume normal execution.");
+    }
+
+    void finallyAlwaysExecutesButReturnsAfterAnException() {
+        try {
+            if (true) {
+                // this never happens
+                doSomeThingThatThrowsARuntimeException();
+            }
+        } finally {
+            // Finally always executes, also after an exception.
+            System.out.println("Some exception occurred here... but not handling it.");
+        }
+        // This code is never reached.
+        System.out.println("Never reached!");
     }
 }
 
