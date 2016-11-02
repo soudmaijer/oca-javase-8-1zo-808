@@ -1,6 +1,9 @@
 package oca;
 
-public class OverridingVsOverloading {
+/**
+ * Also see: https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
+ */
+public class OverridingOverloadingNestedClasses {
 
     public class Parent {
         final int i = 10;
@@ -12,6 +15,13 @@ public class OverridingVsOverloading {
 
     public class Child extends Parent {
         int i = 20; // This variable is hiding the value from the parent class, although its declared final in the Parent it is still allowed to define it in the Child class.
+
+        public Child() {
+            System.out.println(i); // prints: 20
+            System.out.println(this.i); // prints: 20
+            System.out.println(Child.this.i); // prints: 20
+            System.out.println(((Parent) this).i); // prints: 10
+        }
 
         /**
          * Overriding the implementation of the parent class.
@@ -41,5 +51,10 @@ public class OverridingVsOverloading {
         public char returnSomething(int otherVal) {
             return (char) otherVal;
         }
+    }
+
+    public static void main(String[] args) {
+        OverridingOverloadingNestedClasses o = new OverridingOverloadingNestedClasses();
+        o.new Child();
     }
 }
