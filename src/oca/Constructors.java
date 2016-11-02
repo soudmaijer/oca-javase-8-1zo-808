@@ -2,27 +2,23 @@ package oca;
 
 public class Constructors {
 
-    public class DefaultConstructor {
-        // default constructor generated
-    }
-
     /**
      * It is allowed to have public inner classes, but a static inner class is more convenient.
      */
     public class Parent {
-        public Parent() {
+        // When not defining a Constructor, a default constructor is generated which looks like (empty body!):
+        //
+        // public Parent {
+        // }
+    }
+
+    public class Child extends Parent {
+        public Child() {
             // If a constructor does not explicitly invoke a superclass constructor, the Java compiler automatically
             // inserts a call to the no-argument constructor of the superclass.
             // If the super class does not have a no-argument constructor, you will get a compile-time error. Object
             // does have such a constructor, so if Object is the only superclass, there is no problem.
         }
-    }
-
-    public class Child extends Parent {
-        // When not defining a Constructor, a default constructor is generated which looks like (empty body!):
-        //
-        // public Child {
-        // }
     }
 
     public class Child1 extends Parent {
