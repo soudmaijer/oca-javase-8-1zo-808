@@ -1,5 +1,8 @@
 package oca;
 
+/**
+ * https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
+ */
 public class NestedVsInnerClass {
 
     // Static class inside another class is called nested class
