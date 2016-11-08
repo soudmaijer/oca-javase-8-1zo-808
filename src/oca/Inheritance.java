@@ -8,23 +8,32 @@ public class Inheritance {
 
     /**************************************************************************************************************************
      *
-     * Hiding/shadowing
+     * Inheritance
      *
      *************************************************************************************************************************/
 
     class Parent {
         final int i = 10;
+
+        public void print() {
+            System.out.println("parent");
+        }
     }
 
     class Child extends Parent {
         int i = 20; // This variable is hiding the value from the parent class, although its declared final in the Parent it is still allowed to define it in the Child class.
 
-        public Child() {
-            System.out.println(i); // prints: 20
+        public Child(int i) {
+            /**
+             * If a declaration of a type (such as a member variable or a parameter name) in a particular scope (such as an inner class or a method definition) has the same name as another declaration in the enclosing scope, then the declaration shadows the declaration of the enclosing scope. You cannot refer to a shadowed declaration by its name alone.
+             */
+            System.out.println(i); // prints: 5
             System.out.println(this.i); // prints: 20
+            System.out.println(super.i); // prints: 10
             System.out.println(Inheritance.Child.this.i); // prints: 20
             System.out.println(((Inheritance.Parent) this).i); // prints: 10
             System.out.println(this instanceof Parent); // prints: true
+            super.print(); // prints: parent
         }
     }
 
@@ -94,9 +103,8 @@ public class Inheritance {
 
     public static void main(String[] args) {
         Inheritance i = new Inheritance();
-
+        i.new Child(5);
         i.new ConcreteClass();
         i.new SomeAbstractClass(); // Compilation failure, not allowed to instantiate an abstract class.
-
     }
 }
