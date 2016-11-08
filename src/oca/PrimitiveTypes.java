@@ -16,6 +16,9 @@ public class PrimitiveTypes {
 
     public PrimitiveTypes() {
 
+        // Rules for widening: https://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.1.2
+        // Rules for narrowing: https://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.1.3 (requires casting)
+
         int byte_to_int = b;                // ok: 8 -> 32
         byte int_to_byte = i;               // fails: 32 -> 8
         double long_to_double = l;          // ok: 64 -> 64
@@ -45,6 +48,7 @@ public class PrimitiveTypes {
         // Character and String Literals
 
         // Literals of types char and String may contain any Unicode (UTF-16) characters
+
         // The Java programming language also supports a few special escape sequences for char and String literals: \b (backspace), \t (tab), \n (line feed), \f (form feed), \r (carriage return), \" (double quote), \' (single quote), and \\ (backslash).
     }
 
