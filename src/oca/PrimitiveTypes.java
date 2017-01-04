@@ -28,6 +28,8 @@ public class PrimitiveTypes {
         char int_to_char = 0;               // ok: >= 0
         char negative_int_to_char = -1;     // fails: char range is >= 0
         boolean int_to_boolean = 0;         // fails: only booleans allowed
+        int big = 1234567890;
+        float a = big;                      // a = ?
 
         // Integer Literals (Values of the integral types byte, short, int, and long can be created from int literals.)
 
